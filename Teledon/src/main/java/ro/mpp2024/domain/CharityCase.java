@@ -2,10 +2,7 @@ package ro.mpp2024.domain;
 
 public class CharityCase extends Entity<Long> {
     private String name;
-
-    public CharityCase(String name) {
-        this.name = name;
-    }
+    private double totalAmount;
 
     public String getName() {
         return name;
@@ -15,11 +12,19 @@ public class CharityCase extends Entity<Long> {
         this.name = name;
     }
 
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
     @Override
     public String toString() {
         return "CharityCase{" +
-                "id=" + getID() +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
+                ", totalAmount=" + totalAmount +
                 '}';
     }
 }
