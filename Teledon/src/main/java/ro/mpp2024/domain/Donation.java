@@ -15,6 +15,13 @@ public class Donation extends Entity<Long>{
         this.amount = amount;
     }
 
+    public Donation(Double amount, LocalDateTime date, Donor donor, CharityCase charityCase) {
+        this.amount = amount;
+        this.date = date;
+        this.donor = donor;
+        this.charityCase = charityCase;
+    }
+
     public Double getAmount() {
         return amount;
     }
