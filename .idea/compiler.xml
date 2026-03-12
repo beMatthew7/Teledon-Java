@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="Teledon" target="24" />
-      <module name="Teledon.main" target="24" />
-      <module name="Teledon.test" target="24" />
+      <module name="Teledon" target="21" />
+      <module name="Teledon.main" target="21" />
+      <module name="Teledon.test" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>

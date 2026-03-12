@@ -4,6 +4,11 @@ public class CharityCase extends Entity<Long> {
     private String name;
     private double totalAmount;
 
+    public CharityCase(String name, double totalAmount) {
+        this.name = name;
+        this.totalAmount = totalAmount;
+    }
+
     public String getName() {
         return name;
     }
