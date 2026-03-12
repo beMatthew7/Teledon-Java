@@ -1,5 +1,15 @@
+# IDE
+.idea/
+*.iml
+
 # Gradle
 .gradle/
 build/
-.DS_Store
 *.class
+
+# Mac
+.DS_Store
+
+# Logs
+*.log
+EOF
