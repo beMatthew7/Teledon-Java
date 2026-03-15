@@ -52,7 +52,27 @@ public class DonorDbRepository implements DonorRepository{
 
     @Override
     public Donor findOne(Long aLong) {
-        return null;
+        logger.traceEntry("finding donor with id {}", aLong);
+        Connection conn = dbUtils.getConnection();
+        Donor donor = null;
+        try(PreparedStatement preStmt = conn.prepareStatement("select * from donors where id=?")) {
+            preStmt.setLong(1, aLong);
+            try (ResultSet result = preStmt.executeQuery()) {
+                if (result.next()) {
+                    String firstName = result.getString("firstName");
+                    String lastName = result.getString("lastName");
+                    String address = result.getString("address");
+                    String phoneNumber = result.getString("phoneNumber");
+                    donor = new Donor(firstName, lastName, address, phoneNumber);
+                    donor.setID(aLong);
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+            System.out.println("Error DB " + e);
+        }
+        logger.traceExit(donor);
+        return donor;
     }
 
     @Override
@@ -86,13 +106,20 @@ public class DonorDbRepository implements DonorRepository{
     public Donor save(Donor entity) {
         logger.traceEntry("saving donor {}", entity);
         Connection conn = dbUtils.getConnection();
-        try(PreparedStatement preStmt = conn.prepareStatement("insert into donors(firstName, lastName,address, phoneNumber) values (?,?,?,?)")) {
+        try(PreparedStatement preStmt = conn.prepareStatement(
+                "insert into donors(firstName, lastName, address, phoneNumber) values (?,?,?,?)",
+                Statement.RETURN_GENERATED_KEYS)) {
             preStmt.setString(1, entity.getFirstName());
             preStmt.setString(2, entity.getLastName());
             preStmt.setString(3, entity.getAddress());
             preStmt.setString(4, entity.getPhoneNumber());
             int result = preStmt.executeUpdate();
             logger.trace("saved {} instances", result);
+            try (ResultSet generatedKeys = preStmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    entity.setID(generatedKeys.getLong(1));
+                }
+            }
         }
         catch (SQLException e) {
             logger.error(e);
@@ -104,11 +131,41 @@ public class DonorDbRepository implements DonorRepository{
 
     @Override
     public Donor delete(Long aLong) {
-        return null;
+        logger.traceEntry("deleting donor with id {}", aLong);
+        Donor donor = findOne(aLong);
+        if (donor != null) {
+            Connection conn = dbUtils.getConnection();
+            try (PreparedStatement preStmt = conn.prepareStatement("delete from donors where id=?")) {
+                preStmt.setLong(1, aLong);
+                int result = preStmt.executeUpdate();
+                logger.trace("deleted {} instances", result);
+            } catch (SQLException e) {
+                logger.error(e);
+                System.out.println("Error DB " + e);
+            }
+        }
+        logger.traceExit(donor);
+        return donor;
     }
 
     @Override
     public Donor update(Donor entity) {
-        return null;
+        logger.traceEntry("updating donor {}", entity);
+        Connection conn = dbUtils.getConnection();
+        try (PreparedStatement preStmt = conn.prepareStatement(
+                "update donors set firstName=?, lastName=?, address=?, phoneNumber=? where id=?")) {
+            preStmt.setString(1, entity.getFirstName());
+            preStmt.setString(2, entity.getLastName());
+            preStmt.setString(3, entity.getAddress());
+            preStmt.setString(4, entity.getPhoneNumber());
+            preStmt.setLong(5, entity.getID());
+            int result = preStmt.executeUpdate();
+            logger.trace("updated {} instances", result);
+        } catch (SQLException e) {
+            logger.error(e);
+            System.out.println("Error DB " + e);
+        }
+        logger.traceExit();
+        return entity;
     }
 }

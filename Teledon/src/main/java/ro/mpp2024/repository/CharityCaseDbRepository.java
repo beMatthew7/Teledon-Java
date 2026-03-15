@@ -98,11 +98,39 @@ public class CharityCaseDbRepository implements  Repository<Long, CharityCase> {
 
     @Override
     public CharityCase delete(Long aLong) {
-        return null;
+        logger.traceEntry("deleting charity case with id {}", aLong);
+        CharityCase charityCase = findOne(aLong);
+        if (charityCase != null) {
+            Connection conn = dbUtils.getConnection();
+            try (PreparedStatement preStmt = conn.prepareStatement("delete from charityCases where id=?")) {
+                preStmt.setLong(1, aLong);
+                int result = preStmt.executeUpdate();
+                logger.trace("deleted {} instances", result);
+            } catch (SQLException e) {
+                logger.error(e);
+                System.out.println("Error DB " + e);
+            }
+        }
+        logger.traceExit(charityCase);
+        return charityCase;
     }
 
     @Override
     public CharityCase update(CharityCase entity) {
-        return null;
+        logger.traceEntry("updating charity case {}", entity);
+        Connection conn = dbUtils.getConnection();
+        try (PreparedStatement preStmt = conn.prepareStatement(
+                "update charityCases set name=?, totalAmount=? where id=?")) {
+            preStmt.setString(1, entity.getName());
+            preStmt.setDouble(2, entity.getTotalAmount());
+            preStmt.setLong(3, entity.getID());
+            int result = preStmt.executeUpdate();
+            logger.trace("updated {} instances", result);
+        } catch (SQLException e) {
+            logger.error(e);
+            System.out.println("Error DB " + e);
+        }
+        logger.traceExit();
+        return entity;
     }
 }
