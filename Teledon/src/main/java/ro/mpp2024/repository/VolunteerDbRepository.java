@@ -43,6 +43,35 @@ public class VolunteerDbRepository implements VolunteerRepository{
         } catch (Exception e) {
             logger.error(e);
             System.out.println("Error DB " + e);
+            return null;
+        }
+        logger.traceExit(volunteer);
+        return volunteer;
+    }
+
+    @Override
+    public Volunteer findByUsername(String username) {
+        logger.traceEntry("finding volunteer by username {}", username);
+        Connection conn = dbUtils.getConnection();
+        Volunteer volunteer = null;
+        try(PreparedStatement preStmt = conn.prepareStatement("select * from volunteers where username=?")) {
+            preStmt.setString(1, username);
+            try (var result = preStmt.executeQuery()) {
+                if (result.next()) {
+                    Long id = result.getLong("id");
+                    String password = result.getString("password");
+                    String firstName = result.getString("firstName");
+                    String lastName = result.getString("lastName");
+                    String email = result.getString("email");
+                    String phoneNumber = result.getString("phoneNumber");
+                    volunteer = new Volunteer(username, password, firstName, lastName, email, phoneNumber);
+                    volunteer.setID(id);
+                }
+            }
+        } catch (Exception e) {
+            logger.error(e);
+            System.out.println("Error DB " + e);
+            return null;
         }
         logger.traceExit(volunteer);
         return volunteer;

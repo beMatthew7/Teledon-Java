@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.Properties;
 import java.util.ArrayList;
 import java.util.List;
-public class CharityCaseDbRepository implements  Repository<Long, CharityCase> {
+public class CharityCaseDbRepository implements CharityCaseRepository {
 
     private JdbcUtils dbUtils;
     private static final Logger logger = LogManager.getLogger();

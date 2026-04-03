@@ -57,4 +57,20 @@ public class JdbcUtils {
         logger.traceExit(instance);
         return instance;
     }
+
+    public void closeConnection() {
+        logger.traceEntry();
+        if (instance != null) {
+            try {
+                if (!instance.isClosed()) {
+                    instance.close();
+                    logger.info("Database connection closed successfully");
+                }
+            } catch (SQLException e) {
+                logger.error("Error closing database connection", e);
+                System.out.println("Error closing connection: " + e);
+            }
+        }
+        logger.traceExit();
+    }
 }

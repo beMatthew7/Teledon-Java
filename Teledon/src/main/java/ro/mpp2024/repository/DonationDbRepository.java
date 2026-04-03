@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.sql.*;
-public class DonationDbRepository implements Repository<Long, Donation> {
+public class DonationDbRepository implements DonationRepository {
     private JdbcUtils dbUtils;
     private static final Logger logger = LogManager.getLogger();
 
