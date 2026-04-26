@@ -3,6 +3,24 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Teledon.iml" filepath="$PROJECT_DIR$/Teledon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonModel/Teledon.TeledonModel.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonModel/Teledon.TeledonModel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonModel/Teledon.TeledonModel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonModel/Teledon.TeledonModel.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonModel/Teledon.TeledonModel.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonModel/Teledon.TeledonModel.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonNetworking/Teledon.TeledonNetworking.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonNetworking/Teledon.TeledonNetworking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonNetworking/Teledon.TeledonNetworking.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonNetworking/Teledon.TeledonNetworking.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonNetworking/Teledon.TeledonNetworking.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonNetworking/Teledon.TeledonNetworking.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonPersistence/Teledon.TeledonPersistence.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonPersistence/Teledon.TeledonPersistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonPersistence/Teledon.TeledonPersistence.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonPersistence/Teledon.TeledonPersistence.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonPersistence/Teledon.TeledonPersistence.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonPersistence/Teledon.TeledonPersistence.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonServer/Teledon.TeledonServer.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonServer/Teledon.TeledonServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonServer/Teledon.TeledonServer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonServer/Teledon.TeledonServer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonServer/Teledon.TeledonServer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonServer/Teledon.TeledonServer.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonServices/Teledon.TeledonServices.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonServices/Teledon.TeledonServices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonServices/Teledon.TeledonServices.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonServices/Teledon.TeledonServices.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonServices/Teledon.TeledonServices.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonServices/Teledon.TeledonServices.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Teledon.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Teledon.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Teledon.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Teledon.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/mpp-proiect-java-beMatthew7.iml" filepath="$PROJECT_DIR$/.idea/mpp-proiect-java-beMatthew7.iml" />

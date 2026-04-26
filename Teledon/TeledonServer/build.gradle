@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'ro.mpp2024'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+application{
+    mainClass = 'ro.mpp2024.StartJsonServer'
+}
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation project(':TeledonModel')
+    implementation project(':TeledonPersistence')
+    implementation project(':TeledonServices')
+    implementation project(':TeledonNetworking')
+
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -4,6 +4,24 @@
     <bytecodeTargetLevel>
       <module name="Teledon" target="21" />
       <module name="Teledon.main" target="21" />
+      <module name="Teledon.TeledonClient" target="21" />
+      <module name="Teledon.TeledonClient.main" target="21" />
+      <module name="Teledon.TeledonClient.test" target="21" />
+      <module name="Teledon.TeledonModel" target="21" />
+      <module name="Teledon.TeledonModel.main" target="21" />
+      <module name="Teledon.TeledonModel.test" target="21" />
+      <module name="Teledon.TeledonNetworking" target="21" />
+      <module name="Teledon.TeledonNetworking.main" target="21" />
+      <module name="Teledon.TeledonNetworking.test" target="21" />
+      <module name="Teledon.TeledonPersistence" target="21" />
+      <module name="Teledon.TeledonPersistence.main" target="21" />
+      <module name="Teledon.TeledonPersistence.test" target="21" />
+      <module name="Teledon.TeledonServer" target="21" />
+      <module name="Teledon.TeledonServer.main" target="21" />
+      <module name="Teledon.TeledonServer.test" target="21" />
+      <module name="Teledon.TeledonServices" target="21" />
+      <module name="Teledon.TeledonServices.main" target="21" />
+      <module name="Teledon.TeledonServices.test" target="21" />
       <module name="Teledon.test" target="21" />
     </bytecodeTargetLevel>
   </component>

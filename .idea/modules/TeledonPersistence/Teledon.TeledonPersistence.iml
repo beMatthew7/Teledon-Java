@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":TeledonPersistence" external.linked.project.path="$MODULE_DIR$/../../../Teledon/TeledonPersistence" external.root.project.path="$MODULE_DIR$/../../../Teledon" external.system.id="GRADLE" external.system.module.group="ro.mpp2024" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../Teledon/TeledonPersistence">
+      <excludeFolder url="file://$MODULE_DIR$/../../../Teledon/TeledonPersistence/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../Teledon/TeledonPersistence/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'application'
+    id "org.openjfx.javafxplugin" version "0.1.0"
+}
+group = 'ro.mpp2024'
+version = '1.0-SNAPSHOT'
+application {
+    mainClass = 'ro.mpp2024.StartJsonClient'
+}
+repositories {
+    mavenCentral()
+}
+javafx {
+    version = "21.0.4"
+    modules("javafx.controls", "javafx.fxml")
+}
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.25.3'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.25.3'
+
+    implementation project(':TeledonModel')
+    implementation project(':TeledonServices')
+    implementation project(':TeledonServer')
+    implementation project(':TeledonNetworking')
+
+}
+
+test {
+    useJUnitPlatform()
+}
