@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ro.mpp2024.network.grpc";
+option java_outer_classname = "TeledonProto";
+option csharp_namespace = "Teledon.Networking.Grpc";
+
+package teledon;
+
+message Empty {}
+
+message StringRequest {
+  string value = 1;
+}
+
+message VolunteerDto {
+  string id = 1;
+  string username = 2;
+  string password = 3;
+}
+
+message CharityCaseDto {
+  string id = 1;
+  string name = 2;
+  double totalAmount = 3;
+}
+
+message DonorDto {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string address = 4;
+  string phoneNumber = 5;
+}
+
+message DonationDto {
+  string id = 1;
+  DonorDto donor = 2;
+  CharityCaseDto charityCase = 3;
+  double amount = 4;
+}
+
+message CharityCaseList {
+  repeated CharityCaseDto cases = 1;
+}
+
+message DonorList {
+  repeated DonorDto donors = 1;
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message UpdateNotification {
+  string type = 1;
+  oneof payload {
+    DonorDto donor = 2;
+    CharityCaseDto charityCase = 3;
+  }
+}
+
+service TeledonService {
+  rpc Login(LoginRequest) returns (VolunteerDto);
+  rpc Logout(VolunteerDto) returns (Empty);
+
+  rpc FindAllCharityCases(Empty) returns (CharityCaseList);
+  rpc SaveDonation(DonationDto) returns (DonationDto);
+
+  rpc FindAllDonors(Empty) returns (DonorList);
+  rpc FindDonorsByName(StringRequest) returns (DonorList);
+  rpc UpdateDonor(DonorDto) returns (Empty);
+  rpc UpdateCharityCaseTotal(CharityCaseDto) returns (Empty);
+  rpc SaveDonor(DonorDto) returns (DonorDto);
+
+  rpc SubscribeToUpdates(VolunteerDto) returns (stream UpdateNotification);
+}

@@ -1,12 +1,14 @@
 package ro.mpp2024;
 
-import ro.mpp2024.network.utils.AbstractServer;
-import ro.mpp2024.network.utils.TeledonJsonConcurrentServer;
 import ro.mpp2024.repository.*;
+import ro.mpp2024.server.TeledonGrpcServiceImpl;
 import ro.mpp2024.server.TeledonServicesImpl;
 
+// IMPORTURILE NOI PENTRU gRPC
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
+
 import java.io.IOException;
-import java.rmi.ServerException;
 import java.util.Properties;
 
 public class StartJsonServer {
@@ -25,7 +27,6 @@ public class StartJsonServer {
             return;
         }
 
-        
         VolunteerRepository volunteerRepo = new VolunteerDbRepository(serverProps);
         CharityCaseRepository charityCaseRepo = new CharityCaseDbRepository(serverProps);
         DonorRepository donorRepo = new DonorDbRepository(serverProps);
@@ -34,11 +35,19 @@ public class StartJsonServer {
         TeledonServicesImpl services = new TeledonServicesImpl(
                 volunteerRepo, donorRepo, donationRepo, charityCaseRepo);
 
-        AbstractServer server = new TeledonJsonConcurrentServer(PORT, services);
+
         try {
+            Server server = ServerBuilder.forPort(PORT)
+                    .addService(new TeledonGrpcServiceImpl(services))
+                    .build();
+
             server.start();
+            System.out.println("Server gRPC a pornit cu succes pe portul " + PORT + "!");
+
+            server.awaitTermination();
+
         } catch (Exception e) {
-            System.err.println("Error starting server: " + e);
+            System.err.println("Error starting gRPC server: " + e);
         }
     }
 }
