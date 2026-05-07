@@ -1,15 +1,29 @@
 package ro.mpp2024.model;
 
+import jakarta.persistence.*;
+
+@jakarta.persistence.Entity
+@Table(name = "charityCases")
 public class CharityCase implements Entity<Long> {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "totalAmount")
     private double totalAmount;
+
+    public CharityCase(){
+
+    }
 
     public CharityCase(String name, double totalAmount) {
         this.name = name;
         this.totalAmount = totalAmount;
     }
-
 
     public String getName() {
         return name;
@@ -34,7 +48,6 @@ public class CharityCase implements Entity<Long> {
                 ", totalAmount=" + totalAmount +
                 '}';
     }
-
 
     @Override
     public Long getId() {

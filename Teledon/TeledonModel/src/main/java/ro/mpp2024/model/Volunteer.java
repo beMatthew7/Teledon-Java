@@ -1,15 +1,39 @@
 package ro.mpp2024.model;
 
 import ro.mpp2024.model.Entity;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@jakarta.persistence.Entity
+@Table(name = "Volunteers")
 public class Volunteer implements Entity<Long> {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "firstName")
     private String firstName;
+
+    @Column(name = "lastName")
     private String lastName;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "phoneNumber")
     private String phoneNumber;
+
+    public Volunteer() { }
 
     public Volunteer(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
         this.username = username;

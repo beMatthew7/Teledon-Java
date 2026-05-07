@@ -5,13 +5,31 @@ import ro.mpp2024.model.Donor;
 import ro.mpp2024.model.Entity;
 
 import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
+@jakarta.persistence.Entity
+@Table(name = "donations")
 public class Donation implements Entity<Long> {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column (name = "amount")
     private Double amount;
+
+    @Column(name = "date")
     private LocalDateTime date;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "donorId")
     private Donor donor;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "charityCaseId")
     private CharityCase charityCase;
+
+    public Donation() { }
 
     public Donation(CharityCase charityCase, Donor donor, Double amount) {
         this.charityCase = charityCase;

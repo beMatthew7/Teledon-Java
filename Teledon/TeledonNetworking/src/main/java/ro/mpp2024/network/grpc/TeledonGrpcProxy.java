@@ -36,7 +36,6 @@ public class TeledonGrpcProxy implements ITeledonServices {
             this.clientObserver = client;
             subscribeToUpdates(username);
 
-            // Folosim constructorul corect din clasa ta Volunteer
             Volunteer volunteer = new Volunteer(response.getUsername(), response.getPassword());
             volunteer.setId(Long.parseLong(response.getId()));
             return volunteer;

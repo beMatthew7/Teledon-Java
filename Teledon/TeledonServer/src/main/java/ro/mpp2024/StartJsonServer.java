@@ -1,6 +1,10 @@
 package ro.mpp2024;
 
 import ro.mpp2024.repository.*;
+import ro.mpp2024.repositoryORM.CharityCaseHibernateRepository;
+import ro.mpp2024.repositoryORM.DonationHibernateRepository;
+import ro.mpp2024.repositoryORM.DonorHibernateRepository;
+import ro.mpp2024.repositoryORM.VolunteerHibernateRepository;
 import ro.mpp2024.server.TeledonGrpcServiceImpl;
 import ro.mpp2024.server.TeledonServicesImpl;
 
@@ -13,7 +17,7 @@ import java.util.Properties;
 
 public class StartJsonServer {
 
-    private static final int PORT = 55557;
+    private static int PORT;
 
     public static void main(String[] args) {
 
@@ -22,15 +26,22 @@ public class StartJsonServer {
             serverProps.load(StartJsonServer.class
                     .getResourceAsStream("/teledonserver.properties"));
             System.out.println("Server properties loaded");
+
+            PORT = Integer.parseInt(serverProps.getProperty("server.port", "55557"));
+            System.out.println("Server port: " + PORT);
         } catch (IOException e) {
             System.err.println("Cannot find teledonserver.properties " + e);
             return;
         }
 
-        VolunteerRepository volunteerRepo = new VolunteerDbRepository(serverProps);
-        CharityCaseRepository charityCaseRepo = new CharityCaseDbRepository(serverProps);
-        DonorRepository donorRepo = new DonorDbRepository(serverProps);
-        DonationRepository donationRepo = new DonationDbRepository(serverProps, donorRepo, charityCaseRepo);
+//        VolunteerRepository volunteerRepo = new VolunteerDbRepository(serverProps);
+//        CharityCaseRepository charityCaseRepo = new CharityCaseDbRepository(serverProps);
+//        DonorRepository donorRepo = new DonorDbRepository(serverProps);
+//        DonationRepository donationRepo = new DonationDbRepository(serverProps, donorRepo, charityCaseRepo);
+        VolunteerRepository volunteerRepo = new VolunteerHibernateRepository();
+        CharityCaseRepository charityCaseRepo = new CharityCaseHibernateRepository();
+        DonorRepository donorRepo = new DonorHibernateRepository();
+        DonationRepository donationRepo = new DonationHibernateRepository();
 
         TeledonServicesImpl services = new TeledonServicesImpl(
                 volunteerRepo, donorRepo, donationRepo, charityCaseRepo);

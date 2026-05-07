@@ -1,11 +1,28 @@
 package ro.mpp2024.model;
 
+import jakarta.persistence.*;
+
+@jakarta.persistence.Entity
+@Table(name = "donors")
 public class Donor implements Entity<Long> {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "firstName")
     private String firstName;
+
+    @Column(name = "lastName")
     private String lastName;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "phoneNumber")
     private String phoneNumber;
+
+    public Donor() { }
 
     public Donor(String firstName, String lastName, String address, String phoneNumber) {
         this.firstName = firstName;
