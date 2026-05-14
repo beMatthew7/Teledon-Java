@@ -1,0 +1,223 @@
+/* Charity App Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background-color: #f5f5f5;
+}
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  color: #333;
+  font-size: 2rem;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+.charity-form h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+    background-color: #ececec;
+    color: #1f2028;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.form-actions button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.form-actions button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.form-actions button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+/* Filter Styles */
+.charity-filter h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.filter-group {
+  margin-bottom: 15px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
+}
+
+.filter-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+    background-color: #ececec;
+    color: #1f2028;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.filter-actions button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+}
+
+.filter-actions button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.filter-actions button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.filter-actions button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+/* Table Styles */
+.charity-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.charity-table th,
+.charity-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.charity-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.charity-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.charity-table .edit-btn,
+.charity-table .delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 4px;
+    color: #9ca3af;
+}
+
+.charity-table .edit-btn:hover {
+  background-color: #ffefa3;
+}
+
+.charity-table .delete-btn:hover {
+  background-color: #ffbfc7;
+}
+
+/* Error and Loading */
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+}

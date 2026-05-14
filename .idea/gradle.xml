@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/Teledon" />
+            <option value="$PROJECT_DIR$/Teledon/RestServices" />
             <option value="$PROJECT_DIR$/Teledon/TeledonClient" />
             <option value="$PROJECT_DIR$/Teledon/TeledonModel" />
             <option value="$PROJECT_DIR$/Teledon/TeledonNetworking" />

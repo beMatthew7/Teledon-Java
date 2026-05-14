@@ -15,9 +15,9 @@ const CharityFilter = ({ onFilter }) => {
 
   return (
     <form onSubmit={handleFilter} className="charity-filter">
-      <h3>Filtrează cazuri</h3>
+      <h3>Filtreaza cazuri</h3>
       <div className="filter-group">
-        <label htmlFor="maxAmount">Sumă maximă:</label>
+        <label htmlFor="maxAmount">Suma maxima:</label>
         <input
           type="number"
           id="maxAmount"
@@ -25,11 +25,11 @@ const CharityFilter = ({ onFilter }) => {
           onChange={(e) => setMaxAmount(e.target.value)}
           step="0.01"
           min="0"
-          placeholder="Introdu sumă maximă"
+          placeholder="Introdu suma maxima"
         />
       </div>
       <div className="filter-actions">
-        <button type="submit">Filtrează</button>
+        <button type="submit">Filtreaza</button>
         <button type="button" onClick={handleClear}>Reset</button>
       </div>
     </form>

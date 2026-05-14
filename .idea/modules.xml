@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Teledon.iml" filepath="$PROJECT_DIR$/Teledon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RestServices/Teledon.RestServices.iml" filepath="$PROJECT_DIR$/.idea/modules/RestServices/Teledon.RestServices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RestServices/Teledon.RestServices.main.iml" filepath="$PROJECT_DIR$/.idea/modules/RestServices/Teledon.RestServices.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RestServices/Teledon.RestServices.test.iml" filepath="$PROJECT_DIR$/.idea/modules/RestServices/Teledon.RestServices.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.main.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.test.iml" filepath="$PROJECT_DIR$/.idea/modules/TeledonClient/Teledon.TeledonClient.test.iml" />

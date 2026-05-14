@@ -1,6 +1,6 @@
 const CharityTable = ({ cases, onEdit, onDelete }) => {
   if (!cases || cases.length === 0) {
-    return <p className="no-data">Nu există cazuri caritabile de afișat.</p>;
+    return <p className="no-data">Nu exista cazuri caritabile de afisat.</p>;
   }
 
   return (
@@ -9,8 +9,8 @@ const CharityTable = ({ cases, onEdit, onDelete }) => {
         <tr>
           <th>ID</th>
           <th>Nume</th>
-          <th>Sumă</th>
-          <th>Acțiuni</th>
+          <th>Suma</th>
+          <th>Actiuni</th>
         </tr>
       </thead>
       <tbody>
@@ -23,16 +23,16 @@ const CharityTable = ({ cases, onEdit, onDelete }) => {
               <button
                 className="edit-btn"
                 onClick={() => onEdit(charityCase)}
-                title="Editează"
+                title="Editeaza"
               >
-                ✏️
+                Edit
               </button>
               <button
                 className="delete-btn"
                 onClick={() => onDelete(charityCase.id)}
-                title="Șterge"
+                title="sterge"
               >
-                🗑️
+                Delete
               </button>
             </td>
           </tr>

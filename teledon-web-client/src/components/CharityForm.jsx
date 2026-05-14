@@ -1,17 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const CharityForm = ({ onSubmit, editingCase, onCancel }) => {
-  const [name, setName] = useState('');
-  const [totalAmount, setTotalAmount] = useState('');
+  const [name, setName] = useState(editingCase?.name || '');
+  const [totalAmount, setTotalAmount] = useState(editingCase?.totalAmount || '');
+  const prevEditingCaseRef = useRef(null);
 
   useEffect(() => {
-    if (editingCase) {
+    if (editingCase && editingCase !== prevEditingCaseRef.current) {
       setName(editingCase.name);
       setTotalAmount(editingCase.totalAmount);
-    } else {
+    } else if (!editingCase) {
       setName('');
       setTotalAmount('');
     }
+    prevEditingCaseRef.current = editingCase;
   }, [editingCase]);
 
   const handleSubmit = (e) => {
@@ -32,7 +34,7 @@ const CharityForm = ({ onSubmit, editingCase, onCancel }) => {
 
   return (
     <form onSubmit={handleSubmit} className="charity-form">
-      <h2>{editingCase ? 'Editează Caz Caritabil' : 'Adaugă Caz Caritabil'}</h2>
+      <h2>{editingCase ? 'Editeaza Caz Caritabil' : 'Adauga Caz Caritabil'}</h2>
       <div className="form-group">
         <label htmlFor="name">Nume:</label>
         <input
@@ -44,7 +46,7 @@ const CharityForm = ({ onSubmit, editingCase, onCancel }) => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="totalAmount">Sumă:</label>
+        <label htmlFor="totalAmount">Suma:</label>
         <input
           type="number"
           id="totalAmount"
@@ -57,11 +59,11 @@ const CharityForm = ({ onSubmit, editingCase, onCancel }) => {
       </div>
       <div className="form-actions">
         <button type="submit">
-          {editingCase ? 'Salvează' : 'Adaugă'}
+          {editingCase ? 'Salveaza' : 'Adauga'}
         </button>
         {editingCase && (
           <button type="button" onClick={onCancel}>
-            Anulează
+            Anuleaza
           </button>
         )}
       </div>
@@ -69,4 +71,5 @@ const CharityForm = ({ onSubmit, editingCase, onCancel }) => {
   );
 };
 
+CharityForm.displayName = 'CharityForm';
 export default CharityForm;

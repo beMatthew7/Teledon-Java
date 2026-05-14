@@ -4,6 +4,9 @@
     <bytecodeTargetLevel>
       <module name="Teledon" target="21" />
       <module name="Teledon.main" target="21" />
+      <module name="Teledon.RestServices" target="21" />
+      <module name="Teledon.RestServices.main" target="21" />
+      <module name="Teledon.RestServices.test" target="21" />
       <module name="Teledon.TeledonClient" target="21" />
       <module name="Teledon.TeledonClient.main" target="21" />
       <module name="Teledon.TeledonClient.test" target="21" />
@@ -24,5 +27,12 @@
       <module name="Teledon.TeledonServices.test" target="21" />
       <module name="Teledon.test" target="21" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Teledon.RestServices" options="-parameters" />
+      <module name="Teledon.RestServices.main" options="-parameters" />
+      <module name="Teledon.RestServices.test" options="-parameters" />
+    </option>
   </component>
 </project>
