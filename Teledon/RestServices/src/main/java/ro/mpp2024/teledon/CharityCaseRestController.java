@@ -8,6 +8,7 @@ import ro.mpp2024.repository.CharityCaseRepository;
 
 @RestController
 @RequestMapping("teledon/charity-cases")
+@CrossOrigin(origins = "*")
 public class CharityCaseRestController {
 
     @Autowired
