@@ -133,4 +133,9 @@ public class CharityCaseDbRepository implements CharityCaseRepository {
         logger.traceExit();
         return entity;
     }
+
+    @Override
+    public Iterable<CharityCase> findByAmountLessThan(Double maxAmount) {
+        return null;
+    }
 }

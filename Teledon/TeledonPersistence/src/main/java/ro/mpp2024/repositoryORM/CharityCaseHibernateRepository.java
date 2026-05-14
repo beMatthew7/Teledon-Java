@@ -1,9 +1,11 @@
 package ro.mpp2024.repositoryORM;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 import ro.mpp2024.model.CharityCase;
 import ro.mpp2024.repository.CharityCaseRepository;
 
+@Repository
 public class CharityCaseHibernateRepository implements CharityCaseRepository {
 
     @Override
@@ -39,5 +41,14 @@ public class CharityCaseHibernateRepository implements CharityCaseRepository {
     public CharityCase update(CharityCase entity) {
         HibernateUtils.getSessionFactory().inTransaction(session -> session.merge(entity));
         return entity;
+    }
+
+    @Override
+    public Iterable<CharityCase> findByAmountLessThan(Double maxAmount) {
+        try (Session session = HibernateUtils.getSessionFactory().openSession()) {
+            return session.createQuery("from CharityCase where totalAmount < :maxAmount", CharityCase.class)
+                    .setParameter("maxAmount", maxAmount)
+                    .getResultList();
+        }
     }
 }
