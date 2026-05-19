@@ -1,9 +1,11 @@
 package ro.mpp2024.repositoryORM;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 import ro.mpp2024.model.Volunteer;
 import ro.mpp2024.repository.VolunteerRepository;
 
+@Repository
 public class VolunteerHibernateRepository implements VolunteerRepository {
 
     @Override

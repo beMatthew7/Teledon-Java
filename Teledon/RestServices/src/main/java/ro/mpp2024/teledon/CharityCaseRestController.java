@@ -1,7 +1,9 @@
 package ro.mpp2024.teledon;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 import ro.mpp2024.model.CharityCase;
 import ro.mpp2024.repository.CharityCaseRepository;
@@ -9,10 +11,19 @@ import ro.mpp2024.repository.CharityCaseRepository;
 @RestController
 @RequestMapping("teledon/charity-cases")
 @CrossOrigin(origins = "*")
+@SpringBootApplication(
+        scanBasePackages = {"ro.mpp2024"}
+)
 public class CharityCaseRestController {
 
-    @Autowired
     private CharityCaseRepository charityCaseRepository;
+    private SimpMessagingTemplate messagingTemplate;
+
+    @Autowired
+    public CharityCaseRestController(CharityCaseRepository charityCaseRepository, SimpMessagingTemplate messagingTemplate) {
+        this.charityCaseRepository = charityCaseRepository;
+        this.messagingTemplate = messagingTemplate;
+    }
 
 //    @GetMapping
 //    public String test(@RequestParam (value="name", defaultValue="Hello") String name) {
@@ -22,6 +33,7 @@ public class CharityCaseRestController {
     @PostMapping
     public CharityCase create(@RequestBody CharityCase charityCase){
         System.out.println("Creating charityCase");
+        messagingTemplate.convertAndSend("/topic/cases", "updated");
         return charityCaseRepository.save(charityCase);
     }
 
@@ -29,6 +41,7 @@ public class CharityCaseRestController {
     public CharityCase update(@PathVariable Long id, @RequestBody CharityCase charityCase){
         System.out.println("Updating charityCase with id "+id);
         charityCase.setId(id);
+        messagingTemplate.convertAndSend("/topic/cases", "updated");
         return charityCaseRepository.update(charityCase);
     }
 
@@ -39,6 +52,7 @@ public class CharityCaseRestController {
         if (deleted == null) {
             return ResponseEntity.notFound().build();
         }
+        messagingTemplate.convertAndSend("/topic/cases", "updated");
         return ResponseEntity.ok(deleted);
     }
 
