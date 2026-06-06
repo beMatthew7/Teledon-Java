@@ -1,4 +1,4 @@
-const CharityTable = ({ cases, onEdit, onDelete }) => {
+const CharityTable = ({ cases, onEdit, onDelete, isVoluntar = false }) => {
   if (!cases || cases.length === 0) {
     return <p className="no-data">Nu exista cazuri caritabile de afisat.</p>;
   }
@@ -10,7 +10,7 @@ const CharityTable = ({ cases, onEdit, onDelete }) => {
           <th>ID</th>
           <th>Nume</th>
           <th>Suma</th>
-          <th>Actiuni</th>
+          {isVoluntar && <th>Actiuni</th>}
         </tr>
       </thead>
       <tbody>
@@ -19,22 +19,24 @@ const CharityTable = ({ cases, onEdit, onDelete }) => {
             <td>{charityCase.id}</td>
             <td>{charityCase.name}</td>
             <td>{charityCase.totalAmount.toFixed(2)} RON</td>
-            <td>
-              <button
-                className="edit-btn"
-                onClick={() => onEdit(charityCase)}
-                title="Editeaza"
-              >
-                Edit
-              </button>
-              <button
-                className="delete-btn"
-                onClick={() => onDelete(charityCase.id)}
-                title="sterge"
-              >
-                Delete
-              </button>
-            </td>
+            {isVoluntar && (
+              <td>
+                <button
+                  className="edit-btn"
+                  onClick={() => onEdit(charityCase)}
+                  title="Editeaza"
+                >
+                  Edit
+                </button>
+                <button
+                  className="delete-btn"
+                  onClick={() => onDelete(charityCase.id)}
+                  title="Sterge"
+                >
+                  Delete
+                </button>
+              </td>
+            )}
           </tr>
         ))}
       </tbody>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.web.bind.annotation.*;
 import ro.mpp2024.model.CharityCase;
 import ro.mpp2024.repository.CharityCaseRepository;
@@ -18,11 +19,13 @@ public class CharityCaseRestController {
 
     private CharityCaseRepository charityCaseRepository;
     private SimpMessagingTemplate messagingTemplate;
+    private SimpUserRegistry simpUserRegistry;
 
     @Autowired
-    public CharityCaseRestController(CharityCaseRepository charityCaseRepository, SimpMessagingTemplate messagingTemplate) {
+    public CharityCaseRestController(CharityCaseRepository charityCaseRepository, SimpMessagingTemplate messagingTemplate, SimpUserRegistry simpUserRegistry) {
         this.charityCaseRepository = charityCaseRepository;
         this.messagingTemplate = messagingTemplate;
+        this.simpUserRegistry = simpUserRegistry;
     }
 
 //    @GetMapping
@@ -33,16 +36,18 @@ public class CharityCaseRestController {
     @PostMapping
     public CharityCase create(@RequestBody CharityCase charityCase){
         System.out.println("Creating charityCase");
-        messagingTemplate.convertAndSend("/topic/cases", "updated");
-        return charityCaseRepository.save(charityCase);
+        CharityCase saved = charityCaseRepository.save(charityCase);
+        notifyConnectedVolunteers();
+        return saved;
     }
 
     @PutMapping("/{id}")
     public CharityCase update(@PathVariable Long id, @RequestBody CharityCase charityCase){
         System.out.println("Updating charityCase with id "+id);
         charityCase.setId(id);
-        messagingTemplate.convertAndSend("/topic/cases", "updated");
-        return charityCaseRepository.update(charityCase);
+        CharityCase updated = charityCaseRepository.update(charityCase);
+        notifyConnectedVolunteers();
+        return updated;
     }
 
     @DeleteMapping("/{id}")
@@ -52,7 +57,7 @@ public class CharityCaseRestController {
         if (deleted == null) {
             return ResponseEntity.notFound().build();
         }
-        messagingTemplate.convertAndSend("/topic/cases", "updated");
+        notifyConnectedVolunteers();
         return ResponseEntity.ok(deleted);
     }
 
@@ -75,5 +80,14 @@ public class CharityCaseRestController {
         }
         System.out.println("Retrieving all charity cases");
         return charityCaseRepository.findAll();
+    }
+
+    private void notifyConnectedVolunteers() {
+        simpUserRegistry.getUsers()
+                .forEach(user -> messagingTemplate.convertAndSendToUser(
+                        user.getName(),
+                        "/queue/cases-updates",
+                        "updated"
+                ));
     }
 }

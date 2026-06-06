@@ -50,9 +50,9 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/teledon/auth/**").permitAll() // Permitem login
-                        .requestMatchers("/teledon-ws/**").permitAll()   // Permitem WebSockets
-                        .requestMatchers("/teledon/charity-cases/**").permitAll() // Permitem vizualizare cazuri
+                        .requestMatchers("/teledon/auth/**").permitAll()
+                        .requestMatchers("/teledon-ws/**").permitAll()
+                        .requestMatchers("/teledon/charity-cases/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
